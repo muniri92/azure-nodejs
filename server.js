@@ -3,8 +3,8 @@ var fs = require('fs');
 
 var app = express();
 var port = 3000;
-var path = '/Users'
-var mainlst = []
+var path = '/home';
+var mainlst = [];
 
 app.get('/', function(req, res) {
   var foo = `
@@ -36,6 +36,7 @@ app.get('/', function(req, res) {
       }
       lst.join('');
     };
+    console.log(req.url);
     res.send(([foo, lst.join(), baz]).join(''));
   });
 });
@@ -63,7 +64,6 @@ function createAppGet(newPath) {
         if (items[i].indexOf('.') === -1) {
           mainlst.push(items[i]);
           lst.push( '<a href=/' + items[i] + '><li>' + items[i] + '</li></a>');
-          console.log(items[i]);
           createAppGet(items[i]);
         } else {
           lst.push( '<li>' + items[i] + '</li>');
@@ -71,6 +71,7 @@ function createAppGet(newPath) {
         lst.join('');
       };
       path = path + '/' + newPath;
+      console.log(req.url)
       res.send(([foo, lst.join(), baz]).join(''))
     });
   });
