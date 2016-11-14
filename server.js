@@ -18,6 +18,10 @@ var baz = `
      </html>
 `
 
+app.get('/', function(req, res) {
+  res.send('<h1>Look at <a href="/files">File Directory</a></h1>')
+});
+
 
 app.get('/files', function(req, res) {
   var lst = [];
