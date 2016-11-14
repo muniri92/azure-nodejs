@@ -45,7 +45,6 @@ app.get('/files/*', function(req, res) {
   url = url.substring(6);
   path = url;
   fs.readdir(path, function(err, items) {
-    console.log(items)
     for (var i = 0; i < items.length; i++) {
       if (fs.lstatSync(path + '/' +  items[i]).isDirectory()) {
         lst.push( '<a href=/files'+ path + '/' +  items[i] + '><li>' + items[i] + '</li></a>');
